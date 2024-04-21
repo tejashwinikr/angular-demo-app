@@ -1,16 +1,25 @@
 <div class="top-menu">
-
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
-
+  <img
+    class="logo"
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+  />
 </div>
 
+<h1>{{ coreCourse.description }}</h1>
 
 <div class="courses">
+  <app-course-card
+    [course]="rxjsCourse"
+    (courseSelected)="onCourseSelected($event)"
+  ></app-course-card>
 
-    <app-course-card></app-course-card>
+  <app-course-card
+    [course]="coreCourse"
+    (courseSelected)="onCourseSelected($event)"
+  ></app-course-card>
 
-
+  <app-course-card
+    [course]="ngrxCourse"
+    (courseSelected)="onCourseSelected($event)"
+  ></app-course-card>
 </div>
-
-
