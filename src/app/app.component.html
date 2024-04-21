@@ -5,21 +5,23 @@
   />
 </div>
 
-<h1>{{ coreCourse.description }}</h1>
+<!-- <h1>{{ coreCourse.description }}</h1> -->
 
 <div class="courses">
-  <app-course-card
-    [course]="rxjsCourse"
-    (courseSelected)="onCourseSelected($event)"
-  ></app-course-card>
+  @for (course of courses; track course.id; let index = $index; let count =$count;
+  let first =$first; let last = $last;let even =$even; let odd =$odd) {
 
+  <!-- <h1>Count : {{count}}</h1> -->
   <app-course-card
-    [course]="coreCourse"
+    [course]="course"
+    [index]="index"
+    [class.is-first]="first" 
+    [class.is-last]="last"
+    [class.is-even]="even" 
+    [class.is-odd]="odd"
     (courseSelected)="onCourseSelected($event)"
-  ></app-course-card>
-
-  <app-course-card
-    [course]="ngrxCourse"
-    (courseSelected)="onCourseSelected($event)"
-  ></app-course-card>
+  />
+  } @empty {
+  <h1>No elements found</h1>
+  }
 </div>
