@@ -7,17 +7,42 @@
 
 <!-- <h1>{{ coreCourse.description }}</h1> -->
 
+<div class="demo">
+  <!-- pipe adding ,date pipe added 
+  {{ startDate | date:'MMM/dd/yyyy'}}
+    <div>{{title | uppercase}}</div>
+    lowercase , titlecase
+  -->
+  <div>start Date : {{ startDate | date : "MMM/dd/yyyy" }}</div>
+  <div>{{ title | uppercase }}</div>
+  <div>{{ price | number : "3.3-5" }}</div>
+  <div>{{ price | currency : "INR" }}</div>
+  <div>percentage {{ rate | percent }}</div>
+  <!-- {{courses | json }} -->
+  <!-- json gives data. keyvalue gives object -->
+  <!-- <div *ngFor="let pair course | keyvalue"> 
+  {{pair.key + ':' +pair.value}}
+  </div> -->
+</div>
+
 <div class="courses">
-  @for (course of courses; track course.id; let index = $index; let count =$count;
-  let first =$first; let last = $last;let even =$even; let odd =$odd) {
+  @for (course of courses; track course.id; let index = $index; let count
+  =$count; let first =$first; let last = $last;let even =$even; let odd =$odd) {
 
   <!-- <h1>Count : {{count}}</h1> -->
+  <!-- <app-course-card
+  *ngFor="let course of courses | slice:0:2; index as i;"
+  [courseSelected]="onCourseSelected($event)"
+  [course]="course"
+  [cardIndex]=""i+1
+  /> -->
+
   <app-course-card
     [course]="course"
     [index]="index"
-    [class.is-first]="first" 
+    [class.is-first]="first"
     [class.is-last]="last"
-    [class.is-even]="even" 
+    [class.is-even]="even"
     [class.is-odd]="odd"
     (courseSelected)="onCourseSelected($event)"
   />
